@@ -44,6 +44,7 @@
    -->
   <script src="./tools/header/dist/bundle.js"></script><!-- Header -->
   <script src="./tools/simple-image/dist/bundle.js"></script><!-- Image -->
+  <script src="./tools/link/dist/bundle.js"></script><!-- LinkTool -->
   <script src="./tools/delimiter/dist/bundle.js"></script><!-- Delimiter -->
   <script src="./tools/list/dist/bundle.js"></script><!-- List -->
   <script src="./tools/checklist/dist/bundle.js"></script><!-- Checklist -->
@@ -93,9 +94,13 @@
         /**
          * Or pass class directly without any configuration
          */
-        image: {
-          class: SimpleImage,
-          inlineToolbar: ['link'],
+        linkTool: {
+          class: LinkTool,
+          config: {
+            endpoints: {
+              byUrl: 'http://localhost:8008/fetchUrl',
+            }
+          }
         },
 
         list: {
@@ -233,15 +238,21 @@
             }
           },
           {
-            type: 'image',
-            data: {
-              url: 'https://ifmo.su/upload/redactor_images/o_e48549d1855c7fc1807308dd14990126.jpg',
-              caption: '',
-              stretched: false,
-              withBorder: true,
-              withBackground: false,
+            type : 'linkTool',
+            data : {
+              link : 'https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore',
+              linkData : {
+                type : 'website',
+                image : {
+                  url : 'https://developer.mozilla.org/static/img/opengraph-logo.72382e605ce3.png'
+                },
+                site_name : 'MDN Web Docs',
+                title : 'Node.insertBefore()',
+                url : 'https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore',
+                description : 'The Node.insertBefore() method inserts a node before the reference node as a child of a specified parent node. If the given child is a reference to an existing node in the document, insertBefore() moves it from its current position to the new position (there is no requirement to remove the node from its parent node before appending it to some other node).'
+              }
             }
-          },
+          }
         ]
       },
       onReady: function(){
