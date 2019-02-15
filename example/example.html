@@ -94,13 +94,6 @@
         /**
          * Or pass class directly without any configuration
          */
-        linkTool: {
-          class: LinkTool,
-          config: {
-            endpoint: 'http://localhost:8008/fetchUrl'
-          }
-        },
-
         list: {
           class: List,
           inlineToolbar: true
@@ -128,6 +121,13 @@
         code: {
           class:  CodeTool,
           shortcut: 'CMD+SHIFT+D'
+        },
+
+        linkTool: {
+          class: LinkTool,
+          config: {
+            endpoint: 'http://localhost:8008/fetchUrl'
+          }
         },
 
         delimiter: Delimiter,
